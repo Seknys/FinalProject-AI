@@ -185,3 +185,90 @@ La función waitKey()espera un evento clave para un "retraso" (aquí, 30 miliseg
 
 ![image](https://user-images.githubusercontent.com/74762981/188541359-1506a811-05db-4606-93a7-7b96ee58a10e.png)
 
+## MAIN - Codigo completo
+
+import cv2
+from tracker import *
+
+tracker = EuclideanDistTracker()
+
+
+cap = cv2.VideoCapture("highway1.mp4")  
+
+object_detector = cv2.createBackgroundSubtractorMOG2(history=100, varThreshold=40)
+
+
+while True: 
+    ret, frame = cap.read()
+    height, width, _ = frame.shape
+       
+    roi = frame[100: 500,800: 1000]
+
+    # 1. Detección de objetos 
+
+
+    mask = object_detector.apply(roi)   
+
+    _, mask = cv2.threshold(mask, 254, 255, cv2.THRESH_BINARY)
+
+    
+    contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+    detections = []
+    for cnt in contours:
+
+
+        area = cv2.contourArea(cnt)
+
+        if area > 1000:
+
+            x, y, w, h = cv2.boundingRect(cnt)
+
+
+            detections.append([x, y, w, h])
+
+    # 2. Seguimiento de objetos
+
+    boxes_ids = tracker.update(detections)
+
+
+    for box_id in boxes_ids:
+
+
+        x, y, w, h, id = box_id
+
+        
+        cv2.putText(roi, str(id), (x, y - 15), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 0), 2)
+
+        #   el color de los contornos en verde con grosor # 3                                        color y grosor
+        
+        
+        cv2.rectangle(roi, (x, y), (x + w, y + h), (0, 255, 0), 3)
+
+ 
+    cv2.imshow("roi", roi)
+    cv2.imshow("Frame", frame)
+    cv2.imshow("Mask", mask)
+
+
+    key = cv2.waitKey(30)
+    if key == 27:
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+
+# Resultados
+Mascara
+
+![image](https://user-images.githubusercontent.com/74762981/188542099-58e87526-112e-4176-b431-90c20f1e3b0d.png)
+
+Zona de Interes
+
+![image](https://user-images.githubusercontent.com/74762981/188542141-f4ab31d1-3514-4ac9-a261-33dd1a32ac4d.png)
+
+
+FRAME
+
+![image](https://user-images.githubusercontent.com/74762981/188542321-5335dc27-8bfc-4cab-b4bd-3529b069c6f0.png)
+
