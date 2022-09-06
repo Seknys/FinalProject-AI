@@ -89,7 +89,100 @@ class EuclideanDistTracker:
         return objects_bbs_ids
 
 
+## 2. MAIN
+Importamos la libreria cv2 que es el opencv que utilzaremos para la deteccion
+# de los objetos, motos y carrros
+
+![image](https://user-images.githubusercontent.com/74762981/188537700-321a75bc-5f6e-44bc-b29f-97e57fc1dcec.png)
+
+Creamos objeto rastreador
+
+![image](https://user-images.githubusercontent.com/74762981/188537804-0d662e40-8f23-492b-ad48-d00ea9108824.png)
+
+Iniciamos la ruta para capturar los fotogramas del video
+
+![image](https://user-images.githubusercontent.com/74762981/188537963-6917bf43-5ccb-48da-bbe3-b99c42f7bf53.png)
+
+Detección de objetos desde la cámara estable
+
+![image](https://user-images.githubusercontent.com/74762981/188538019-1cbc7956-86f7-4712-9698-7b13c548311a.png)
+
+Iniciamos un ciclo mientras es verdadero considerando que es un video
+
+![image](https://user-images.githubusercontent.com/74762981/188538062-77878631-4a0c-4738-b50f-68a7ebf95158.png)
+
+Extraer región de interés
+altura y ancho
+
+![image](https://user-images.githubusercontent.com/74762981/188538184-1936bf57-d91e-47a3-8896-e57d2a216122.png)
+
+## Detección de objetos 
+
+Extraemos en timepo real con una mascara
+
+![image](https://user-images.githubusercontent.com/74762981/188538332-0021cfb6-8ea8-4fbe-84a8-1eff05b1b163.png)
+
+cuando existen sombras tb son detectadas como objetos lo cual vamos a limpiar
+la mascara cuando los valores de pixeles sean menores a 254
+
+![image](https://user-images.githubusercontent.com/74762981/188538375-4b5997c0-f5d4-4977-aacd-3a5a7c6a2725.png)
 
 
+Extraemos las coordenadas y tulizamos la funcion OPEN que es CV2.FIND 
+para encontrar los contornos de los limites de estos objetos blancos en la masccara
 
+![image](https://user-images.githubusercontent.com/74762981/188538426-59816636-18d4-47bc-9930-31813472d152.png)
+
+se crea una matriz :esta es una matriz vacia ,y cada vez que encontramos las cajas,las 
+guardamos dentro de la matriz
+
+![image](https://user-images.githubusercontent.com/74762981/188538469-9a6378cd-9965-4edb-b7ea-65fd7adcabff.png)
+
+Calcula el área y elimina elementos pequeños
+
+![image](https://user-images.githubusercontent.com/74762981/188538518-45c0aad4-0b9e-4264-8ae2-2dbe79584e16.png)
+
+ponemos una condicion, si el area es menor no hace nada y si es mayor que dibuje el contorno
+
+![image](https://user-images.githubusercontent.com/74762981/188538551-a3be8b07-210f-414d-bf40-1f85ed7b236e.png)
+
+ En lugar de dibujar los contornos vamos a extraer el caudro 
+ que rodea cada objeto que sea detectado
+ 
+ ![image](https://user-images.githubusercontent.com/74762981/188538598-b35450ed-c5be-43fc-a6ef-8538cf37c43f.png)
+
+aqui se va a ir agregando ala final de la lista
+
+![image](https://user-images.githubusercontent.com/74762981/188538645-ed9d547f-0e61-48b1-838d-04de350d382c.png)
+
+## Seguimiento de objetos
+
+Ahora necesitamos tener detecciones donde los IDS de las cajas son iguales a la actualizacion del punto del rastreador
+
+![image](https://user-images.githubusercontent.com/74762981/188539573-c3e0016b-2e7d-4195-a8fd-0112b250a0a8.png)
+
+Identificacion de la caja en las IDENTIFICACIONES DE LAS CAJAS
+
+![image](https://user-images.githubusercontent.com/74762981/188541144-69cd3279-f1ec-4e6f-bc5f-424bcc69655f.png)
+
+extraemos la altura y ancho para la identificacion de la caja
+
+![image](https://user-images.githubusercontent.com/74762981/188541201-6c5c4a71-d957-4939-a6d0-aff546829693.png)
+
+ponemos -15 solo para colocar una pequena distancia del objeto y
+el color de los numeros en azul con tamano #2 y grosor #2
+
+![image](https://user-images.githubusercontent.com/74762981/188541254-a025f239-e5d8-4706-a397-228835b9d92a.png)
+
+el color de los contornos en verde con grosor # 3
+
+![image](https://user-images.githubusercontent.com/74762981/188541299-7396caaf-ce79-494d-9b46-fb0e8cd118e6.png)
+
+gracias a los IDS somos capaces de detectar y para contar correctamente los objetos que van pasando
+
+![image](https://user-images.githubusercontent.com/74762981/188541334-2db5084e-2d51-4b2d-9f14-369f61f55cd3.png)
+
+La función waitKey()espera un evento clave para un "retraso" (aquí, 30 milisegundos).
+
+![image](https://user-images.githubusercontent.com/74762981/188541359-1506a811-05db-4606-93a7-7b96ee58a10e.png)
 
