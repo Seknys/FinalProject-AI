@@ -9,8 +9,8 @@ para el seguimiento y el archivo Main.py contendra los parametros que tendran el
 
 # Videos de Youtube
 
-Link de la explicacion y ejecucion del código [Video](https://www.youtube.com/watch?v=MYsncz0bwuc&t=161s)
-Link del manual de usuario [Video](https://www.youtube.com/watch?v=9PG-DLEwOSQ&t=80s)
+- Link de la explicacion y ejecucion del código [Video](https://www.youtube.com/watch?v=MYsncz0bwuc&t=161s)
+- Link del manual de usuario [Video](https://www.youtube.com/watch?v=9PG-DLEwOSQ&t=80s)
 
 # Integrantes 
 - Chávez Dustin
