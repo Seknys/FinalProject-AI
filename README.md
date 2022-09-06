@@ -1,4 +1,5 @@
 # FinalProject-AI
+
 Para el proyecto trabajaremos utilizando la deteccion y el seguimiento de objetos la cual vamos a implementar el archivo Tracker.py 
 para el seguimiento y el archivo Main.py contendra los parametros que tendran el video.
 
@@ -86,6 +87,9 @@ class EuclideanDistTracker:
 
         self.center_points = new_center_points.copy()
         return objects_bbs_ids
+
+
+
 
 
 
