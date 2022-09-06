@@ -13,9 +13,9 @@ Link de la explicacion y ejecucion del código [Video](https://www.youtube.com/w
 Link del manual de usuario [Video](https://www.youtube.com/watch?v=9PG-DLEwOSQ&t=80s)
 
 # Integrantes 
-Chávez Dustin
-Guañuna Steven 
-Pinanjota Kevin
+- Chávez Dustin
+- Guañuna Steven 
+- Pinanjota Kevin
 
 ## 1. TRACKER
 Importamos las librerias a utilizar e implementamos las funciones
