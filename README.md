@@ -90,8 +90,7 @@ class EuclideanDistTracker:
 
 
 ## 2. MAIN
-Importamos la libreria cv2 que es el opencv que utilzaremos para la deteccion
-# de los objetos, motos y carrros
+Importamos la libreria cv2 que es el opencv que utilzaremos para la deteccion de los objetos, motos y carros
 
 ![image](https://user-images.githubusercontent.com/74762981/188537700-321a75bc-5f6e-44bc-b29f-97e57fc1dcec.png)
 
